@@ -1,0 +1,32 @@
+{
+  "name": "cli-table-helper",
+  "version": "1.0.0",
+  "description": "This helper generates tables in a console.",
+  "main": "app.js",
+  "scripts": {
+    "build": "babel -d ./build test.js && babel -d ./build/lib ./lib",
+    "start": "babel-node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Timori/cli-table-helper.git"
+  },
+  "keywords": [
+    "Table",
+    "Helper",
+    "CLI",
+    "Console",
+    "node",
+    "js"
+  ],
+  "author": "Tobias Schotenröhr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Timori/cli-table-helper/issues"
+  },
+  "homepage": "https://github.com/Timori/cli-table-helper#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
