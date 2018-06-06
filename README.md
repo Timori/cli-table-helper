@@ -51,6 +51,7 @@ The Helper can be used by requiring it. Then assign a Variable to it, so that yo
 	2. Parameter: endLine
 		- type: boolean
 		If true, a line is being printed to the console, **after** the table is printed.
+		
 **Adding empty lines**
 Empty Lines can be added as a seperator by using.
 
