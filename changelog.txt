@@ -1,0 +1,10 @@
+Version 1.0.1-2
+---------------
+README
++ new Usage Guide: Adding empty lines
++ new Usage Guioe: Adding Seperators
+~ changed Examples
+
+CODE
++ new Method: addSeperator(string, integer | 10)
+~ replaced hard-coded seperators with new Method

@@ -2,6 +2,7 @@ import CLITable from './lib/cli-table-helper';
 
 let helpTable = new CLITable(3);
 helpTable.addRow("command", ["params"], "description");
+helpTable.addLine();
 helpTable.addRow("list", null, "List all Users");
 helpTable.addRow("listFiles", null, "List all saved Users");
 helpTable.addRow("end", null, "Close / End the UserManager");

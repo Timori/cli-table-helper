@@ -51,6 +51,21 @@ The Helper can be used by requiring it. Then assign a Variable to it, so that yo
 	2. Parameter: endLine
 		- type: boolean
 		If true, a line is being printed to the console, **after** the table is printed.
+**Adding empty lines**
+Empty Lines can be added as a seperator by using.
+
+    helpTable.addLine();
+    
+**Adding Seperators**
+A seperator can be added with a given length.
+
+        helpTable.addSeperator(string, integer|20)
+   1. Parameter: char
+       - type: string
+       The character or string to be printed.
+   2. Parameter: integer or 20
+       - type: integer
+       The number of times, how often the string or char will be printed.
 ## Examples
 This example demonstrated, how the helper generates a well formated table.
 
@@ -58,6 +73,7 @@ This example demonstrated, how the helper generates a well formated table.
     
     let helpTable = new CLITable(3);
     helpTable.addRow("command", ["params"], "description");
+    helpTable.addLine();
     helpTable.addRow("list", null, "List all Users");
     helpTable.addRow("listFiles", null, "List all saved Users");
     helpTable.addRow("end", null, "Close / End the UserManager");
@@ -73,10 +89,11 @@ Output:
 
     --------------------
     command     params              description
+
     list                            List all Users
     listFiles                       List all saved Users
     end                             Close / End the UserManager
-    
+
     create      name|id   points    Create a new User
     delete      name|id             Delete the User and the saved File
     edit        name                Edit a User
