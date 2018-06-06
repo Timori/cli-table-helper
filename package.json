@@ -2,7 +2,7 @@
   "name": "cli-table-helper",
   "version": "1.0.1",
   "description": "This helper generates tables in a console.",
-  "main": "app.js",
+  "main": "build/lib/cli-table-helper.js",
   "scripts": {
     "build": "babel -d ./build test.js && babel -d ./build/lib ./lib",
     "start": "babel-node test.js"
