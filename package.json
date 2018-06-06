@@ -1,6 +1,6 @@
 {
   "name": "cli-table-helper",
-  "version": "1.0.1",
+  "version": "1.0.2-0",
   "description": "This helper generates tables in a console.",
   "main": "build/lib/cli-table-helper.js",
   "scripts": {
