@@ -54,8 +54,8 @@ var CLITable = function () {
 
             this.__addCharCount(startColumn, "first_column");
             !columns ? columns = [] : columns = columns;
-            columns.forEach(function (col) {
-                _this.__addCharCount(col, "column");
+            columns.forEach(function (col, index) {
+                _this.__addCharCount(col, "column" + index);
             });
             if (this.__columns < columns.length) {
                 this.__columns = columns.length;
@@ -91,7 +91,7 @@ var CLITable = function () {
                     var line = _this2.__checkLength(startCol, "first_column");
                     for (var i = 0; i < _this2.columns; i++) {
                         var col = cols[i] || "";
-                        line += _this2.__checkLength(col, "column");
+                        line += _this2.__checkLength(col, "column" + i);
                     }
                     line += desc;
                     console.log(line);

@@ -1,3 +1,7 @@
+Version 1.0.2-r4
+---------------
+~ Columns now can have different lengths.
+
 Version 1.0.1-2
 ---------------
 README
