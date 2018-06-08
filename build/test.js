@@ -8,6 +8,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var helpTable = new _cliTableHelper2.default(3);
 helpTable.addRow("command", ["params"], "description");
+helpTable.addLine();
 helpTable.addRow("list", null, "List all Users");
 helpTable.addRow("listFiles", null, "List all saved Users");
 helpTable.addRow("end", null, "Close / End the UserManager");

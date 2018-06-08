@@ -14,6 +14,9 @@ var CLITable = function () {
 
         _classCallCheck(this, CLITable);
 
+        if (typeof span !== "number") {
+            throw "CLITableError: Constructor parameter is not an integer.";
+        }
         this.__rows = [];
         this.__rowCount = 0;
         this.__columns = 0;
@@ -25,6 +28,21 @@ var CLITable = function () {
         key: "addLine",
         value: function addLine() {
             this.__rows.push(null);
+        }
+    }, {
+        key: "addSeperator",
+        value: function addSeperator(char) {
+            var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 20;
+
+            if (typeof length !== "number") {
+                throw "CLITableError: 2. parameter of addSeperator() is not an integer.";
+            }
+
+            var line = "";
+            for (var i = 0; i < length; i++) {
+                line += char;
+            }
+            console.log(line);
         }
     }, {
         key: "addRow",
@@ -61,7 +79,7 @@ var CLITable = function () {
             var beginLine = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
             var endLine = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-            if (beginLine) console.log("--------------------");
+            if (beginLine) this.addSeperator("-");
 
             this.__rows.forEach(function (row) {
                 if (row === null) {
@@ -80,7 +98,7 @@ var CLITable = function () {
                 }
             });
 
-            if (endLine) console.log("--------------------");
+            if (endLine) this.addSeperator("-");
         }
     }, {
         key: "__checkLength",
