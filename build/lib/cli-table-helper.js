@@ -134,4 +134,4 @@ var CLITable = function () {
     return CLITable;
 }();
 
-exports.default = CLITable;
+exports = CLITable;
