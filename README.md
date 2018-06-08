@@ -17,12 +17,12 @@ The "cli-table-helper" can be used very easely. The following is a suage guide. 
 The Helper can be used by requiring it. Then assign a Variable to it, so that you can use the Object.
 
     var CLITable = require('cli-table-helper');
-      
+    var helpTable = new CLITable().default();
+    
     //ES2016
     import CLITable from 'cli-table-helper';
-    
     var helpTable = new CLITable();
-    //var helpTable = new CLITable(5);
+    
 *CLITable takes one parameter. If you supply an Integer, it defines, how many whitespaces are the span between two columns. Check the examples to see how it works.*
 
 **Using the Helper**
