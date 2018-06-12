@@ -22,6 +22,7 @@ var CLITable = function () {
         this.__columns = 0;
         this.__span = span;
         this.__allowedChars = [];
+        this.__text = "";
     }
 
     _createClass(CLITable, [{
@@ -42,7 +43,7 @@ var CLITable = function () {
             for (var i = 0; i < length; i++) {
                 line += char;
             }
-            console.log(line);
+            this.__rows.push(["!SEPERATOR", line]);
         }
     }, {
         key: "addRow",
@@ -72,18 +73,15 @@ var CLITable = function () {
             }
         }
     }, {
-        key: "displayTable",
-        value: function displayTable() {
+        key: "makeTable",
+        value: function makeTable() {
             var _this2 = this;
-
-            var beginLine = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-            var endLine = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-            if (beginLine) this.addSeperator("-");
 
             this.__rows.forEach(function (row) {
                 if (row === null) {
-                    console.log("");
+                    _this2.__setText();
+                } else if (row[0] === "!SEPERATOR") {
+                    _this2.__setText(row[1]);
                 } else {
                     var startCol = row[0];
                     var cols = row[1];
@@ -94,11 +92,15 @@ var CLITable = function () {
                         line += _this2.__checkLength(col, "column" + i);
                     }
                     line += desc;
-                    console.log(line);
+                    _this2.__setText(line);
                 }
             });
-
-            if (endLine) this.addSeperator("-");
+            return this.table;
+        }
+    }, {
+        key: "displayTable",
+        value: function displayTable() {
+            console.log(this.__text);
         }
     }, {
         key: "__checkLength",
@@ -108,6 +110,17 @@ var CLITable = function () {
                 text += " ";
             }
             return text;
+        }
+    }, {
+        key: "__setText",
+        value: function __setText() {
+            var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+            var firstLine = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+            this.__text += text;
+            if (!firstLine) {
+                this.__text += "\n\r";
+            }
         }
     }, {
         key: "rows",
@@ -128,6 +141,11 @@ var CLITable = function () {
         key: "rowCount",
         get: function get() {
             return this.__rowCount;
+        }
+    }, {
+        key: "table",
+        get: function get() {
+            return this.__text;
         }
     }]);
 

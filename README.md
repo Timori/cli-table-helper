@@ -1,24 +1,25 @@
 
 
+
 # cli-table-helper
-This Helper generates good looking tables in a console. Rows are supplied to the table and then the helper generates an console output.
+This Helper generates good looking tables to be used in consoles / terminals. Rows are supplied to the table and then the helper generates a string.
 ## Installation
 The helper can be installed by using npm. Just copy the following text and paste it into your terminal / console.
 
     npm i cli-table-helper
 
 ## Usage
-The "cli-table-helper" can be used very easely. The following is a suage guide. Some examples are at the bottom.
+The "cli-table-helper" can be used very easely. The following is a usage guide. Some examples are at the bottom.
 
 **Adding the helper**
 The Helper can be used by requiring it. Then assign a Variable to it, so that you can use the Object.
 
     var CLITable = require('cli-table-helper');
-    var helpTable = new CLITable.default();
+    var table = new CLITable.default();
     
     //ES2016+
     import CLITable from 'cli-table-helper';
-    var helpTable = new CLITable();
+    let table = new CLITable();
     
 *CLITable takes one parameter. If you supply an Integer, it defines, how many whitespaces are the span between two columns. Check the examples to see how it works.*
 
@@ -27,89 +28,82 @@ The Helper can be used by requiring it. Then assign a Variable to it, so that yo
  1. **Adding Rows**
 	 At least one row is needed for the helper to generate a console table.
 	 
-	    helpTable.addRow(string, null|array, null|string);
+	    table.addRow(string, null|array, null|string);
 	
 	1. Parameter: firstColumn
 		- type: string
-		The first column is seperated, becaue it could be some heading column. Of course, this can also be a non heading column.
+		The first column is seperated, becaue it could be some heading column.
 	2. Parameter: columns
 		- type: array or null
 		An array of additional columns
 	3. Parameter: description
 		- type: string or null
 		The last column as description. This is useful for command lists.
-2. **Create the Table**
-	After adding some rows, the helper can generate a console table. Currently, the whole table is printed using console.log()
-	
-	   helpTable.makeTable(boolean, boolean);
-	1. Parameter: beginLine
-		- type: boolean
-		If true, a line is being printed to the console, **before** te table is printed.
-	2. Parameter: endLine
-		- type: boolean
-		If true, a line is being printed to the console, **after** the table is printed.
 		
-**Adding empty lines**
-Empty Lines can be added as a seperator by using.
+	**Adding empty lines**
+	Empty Lines can be added as a seperator by using.
 
-    helpTable.addLine();
+	    table.addLine();
+	    
+	**Adding Seperators**
+	A string seperator can be added with a given length.
+
+	    table.addSeperator(string, integer|20);
+	   1. Parameter: char
+	       - type: string
+	       The character or string to be printed.
+	   2. Parameter: integer or 20
+	       - type: integer
+	       The number of times, how often the string or char will be printed.
+	
+2. **Create the Table**
+	After adding some rows, the helper can generate the table as a pure string. 
+	
+	   let pureString = table.makeTable();
     
-**Adding Seperators**
-A seperator can be added with a given length.
+    *It returns the table as a string.*   
+ 3. **Display / Using the Table**
+	 The table can now be displayed in the console / terminal:
 
-    helpTable.addSeperator(string, integer|20);
-   1. Parameter: char
-       - type: string
-       The character or string to be printed.
-   2. Parameter: integer or 20
-       - type: integer
-       The number of times, how often the string or char will be printed.
-       
- **Display the Table**
- You can display the Table in a terminal / console by using the following method:
- 
+        table.displayTable();
 
-    helpTable.displayTable();
+	The raw string of the table can also be used:
+
+	    let pureTable = table.table;
+	    console.log(pureTable);
 
  
 ## Example
+**Full demo**
 This example demonstrated, how the helper generates a well formated table.
 
     import CLITable from './lib/cli-table-helper';
+    let table = new CLITable(5);
     
-    let helpTable = new CLITable(3);
-    helpTable.addRow("command", ["params"], "description");
-    helpTable.addLine();
-    helpTable.addRow("list", null, "List all Users");
-    helpTable.addRow("listFiles", null, "List all saved Users");
-    helpTable.addRow("end", null, "Close / End the UserManager");
-    helpTable.addLine();
-    helpTable.addRow("create", ["name|id", "points"], "Create a new User");
-    helpTable.addRow("delete", ["name|id"], "Delete the User and the saved File");
-    helpTable.addRow("edit", ["name"], "Edit a User");
-    helpTable.addRow("load", ["name|id"], "Load a saved User");
-    helpTable.addRow("remove", ["name|id"], "Remove the User off the UserManager");
-    helpTable.addRow("save", ["name|id"], "Save the User to a file");
-    helpTable.makeTable(true, true);
-    helpTable.displayTable();
-    //Alternative for displayTable():
-    //console.log(helpTable.table);
+    console.log("Banking Account Manager");
+    table.addSeperator("-");
+    table.addRow("Command:", ["Parameters:"], "Description:");
+    table.addLine();
+    table.addRow("create", ["Name", "Amount"], "Creates a new Bank Account.");
+    table.addRow("delete", ["Name"], "Deletes the Bank Account by Name.");
+    table.addLine();
+    table.addRow("deposit", ["Amount"], "Deposit the Amount.");
+    table.addRow("withdraw", ["Amount"], "Withdraw the Amount off the Bank Account.");
+    table.addSeperator("-");
+    table.makeTable();
+    table.displayTable();
 
 Output:
 
+    Banking Account Manager
     --------------------
-    command     params             description
+    Command:     Parameters:                Description:
     
-    list                           List all Users
-    listFiles                      List all saved Users
-    end                            Close / End the UserManager
+    create       Name            Amount     Creates a new Bank Account.
+    delete       Name                       Deletes the Bank Account by Name.
     
-    create      name|id   points   Create a new User
-    delete      name|id            Delete the User and the saved File
-    edit        name               Edit a User
-    load        name|id            Load a saved User
-    remove      name|id            Remove the User off the UserManager
-    save        name|id            Save the User to a file
+    deposit      Amount                     Deposit the Amount.
+    withdraw     Amount                     Withdraw the Amount off the Bank Account.
     --------------------
 
 ## License
