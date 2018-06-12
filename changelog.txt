@@ -1,3 +1,11 @@
+Version 1.1.1
+---------------
+makeTable no longer adds Seperators. If Seperators are needed, they can be added using tableObject.addSeperator().
+
+~ makeTable() -> Doesn't take parameters no more.
+~ addSeperators(string, integer|20) -> addSeperator has been fixed. The method now adds the wanted seperator as intended.
+
+---------------
 Version 1.1.0
 ---------------
 The table is now built as a pure string. You can get that string after using makeTable(boolean, boolean) with tableObject.table. That way, direct usage of console.log can be avoided.
