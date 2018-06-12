@@ -1,7 +1,17 @@
+Version 1.1.0
+---------------
+The table is now built as a pure string. You can get that string after using makeTable(boolean, boolean) with tableObject.table. That way, direct usage of console.log can be avoided.
+
+~ displayTable() -> is now a void method. It simply uses the console.log function to print the table. Also, this method no longer creates the table. Use makeTable to create the table.
+~ Readme has been updated.
++ makeTable(boolean, boolean) -> New method to create the table. The table is now built as a pure string. Parameters are the same as for the old displayTable(boolean, boolean) method.
+
+---------------
 Version 1.0.2-r4
 ---------------
 ~ Columns now can have different lengths.
 
+---------------
 Version 1.0.1-2
 ---------------
 README

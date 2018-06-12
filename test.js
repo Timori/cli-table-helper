@@ -13,4 +13,5 @@ helpTable.addRow("edit", ["name"], "Edit a User");
 helpTable.addRow("load", ["name|id"], "Load a saved User");
 helpTable.addRow("remove", ["name|id"], "Remove the User off the UserManager");
 helpTable.addRow("save", ["name|id"], "Save the User to a file");
-helpTable.displayTable(true, true);
+helpTable.makeTable(true, true);
+helpTable.displayTable();

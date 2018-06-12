@@ -1,14 +1,11 @@
 
+
 # cli-table-helper
 This Helper generates good looking tables in a console. Rows are supplied to the table and then the helper generates an console output.
 ## Installation
 The helper can be installed by using npm. Just copy the following text and paste it into your terminal / console.
 
     npm i cli-table-helper
-
-## Methods and Parameters
-The following list shows all the Methods this helper uses to generate
-**
 
 ## Usage
 The "cli-table-helper" can be used very easely. The following is a suage guide. Some examples are at the bottom.
@@ -19,7 +16,7 @@ The Helper can be used by requiring it. Then assign a Variable to it, so that yo
     var CLITable = require('cli-table-helper');
     var helpTable = new CLITable.default();
     
-    //ES2016
+    //ES2016+
     import CLITable from 'cli-table-helper';
     var helpTable = new CLITable();
     
@@ -41,10 +38,10 @@ The Helper can be used by requiring it. Then assign a Variable to it, so that yo
 	3. Parameter: description
 		- type: string or null
 		The last column as description. This is useful for command lists.
-2. **Display the table**
+2. **Create the Table**
 	After adding some rows, the helper can generate a console table. Currently, the whole table is printed using console.log()
 	
-	   helpTable.displayTable(boolean, boolean);
+	   helpTable.makeTable(boolean, boolean);
 	1. Parameter: beginLine
 		- type: boolean
 		If true, a line is being printed to the console, **before** te table is printed.
@@ -60,14 +57,22 @@ Empty Lines can be added as a seperator by using.
 **Adding Seperators**
 A seperator can be added with a given length.
 
-        helpTable.addSeperator(string, integer|20)
+    helpTable.addSeperator(string, integer|20);
    1. Parameter: char
        - type: string
        The character or string to be printed.
    2. Parameter: integer or 20
        - type: integer
        The number of times, how often the string or char will be printed.
-## Examples
+       
+ **Display the Table**
+ You can display the Table in a terminal / console by using the following method:
+ 
+
+    helpTable.displayTable();
+
+ 
+## Example
 This example demonstrated, how the helper generates a well formated table.
 
     import CLITable from './lib/cli-table-helper';
@@ -85,22 +90,27 @@ This example demonstrated, how the helper generates a well formated table.
     helpTable.addRow("load", ["name|id"], "Load a saved User");
     helpTable.addRow("remove", ["name|id"], "Remove the User off the UserManager");
     helpTable.addRow("save", ["name|id"], "Save the User to a file");
-    helpTable.displayTable(true, true);
+    helpTable.makeTable(true, true);
+    helpTable.displayTable();
+    //Alternative for displayTable():
+    //console.log(helpTable.table);
+
 Output:
 
     --------------------
-    command     params              description
-
-    list                            List all Users
-    listFiles                       List all saved Users
-    end                             Close / End the UserManager
-
-    create      name|id   points    Create a new User
-    delete      name|id             Delete the User and the saved File
-    edit        name                Edit a User
-    load        name|id             Load a saved User
-    remove      name|id             Remove the User off the UserManager
-    save        name|id             Save the User to a file
+    command     params             description
+    
+    list                           List all Users
+    listFiles                      List all saved Users
+    end                            Close / End the UserManager
+    
+    create      name|id   points   Create a new User
+    delete      name|id            Delete the User and the saved File
+    edit        name               Edit a User
+    load        name|id            Load a saved User
+    remove      name|id            Remove the User off the UserManager
+    save        name|id            Save the User to a file
     --------------------
+
 ## License
-This helper is released unde the MIT license.
+This helper is released under the MIT license.
