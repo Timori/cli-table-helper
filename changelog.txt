@@ -1,3 +1,11 @@
+Version 1.1.1r1
+---------------
+Readme has been rewritten. General corrections
+
+~ Readme -> The Readme has been rewritten. A new example is there, representing the latest state.
++ Small fixes
+
+---------------
 Version 1.1.1
 ---------------
 makeTable no longer adds Seperators. If Seperators are needed, they can be added using tableObject.addSeperator().
