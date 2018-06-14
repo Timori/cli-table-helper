@@ -4,28 +4,55 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var CLITable = function () {
     function CLITable() {
-        var span = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
+        var span = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
 
         _classCallCheck(this, CLITable);
 
-        if (typeof span !== "number") {
-            throw "CLITableError: Constructor parameter is not an integer.";
+        if (typeof span !== "number" && (typeof span === "undefined" ? "undefined" : _typeof(span)) !== "object") {
+            throw "CLITableError: Constructor parameter is invalid.";
         }
         this.__rows = [];
         this.__rowCount = 0;
         this.__columns = 0;
-        this.__span = span;
+        this.__options = null;
+        this.__span = null;
         this.__allowedChars = [];
         this.__text = "";
+
+        if (typeof span === "number") {
+            this.__span = span;
+        } else if ((typeof span === "undefined" ? "undefined" : _typeof(span)) === "object") {
+            this.__options = span;
+        }
     }
 
     _createClass(CLITable, [{
+        key: "__addSpan",
+        value: function __addSpan() {
+            var opt = this.__options;
+            var both = opt.both || false;
+            var left = both ? this.__addSpaces(opt.both) : this.__addSpaces(opt.left) || "";
+            var right = both ? this.__addSpaces(opt.both) : this.__addSpaces(opt.right) || "";
+            return left + (opt.sign || '') + right;
+        }
+    }, {
+        key: "__addSpaces",
+        value: function __addSpaces(amount) {
+            var line = "";
+            for (var i = 0; i < amount; i++) {
+                line += " ";
+            }
+            return line;
+        }
+    }, {
         key: "addLine",
         value: function addLine() {
             this.__rows.push(null);
@@ -69,7 +96,7 @@ var CLITable = function () {
             var existingCount = this.__allowedChars[stack] - this.__span || 0;
             var newCount = text.length;
             if (existingCount < newCount) {
-                this.__allowedChars[stack] = newCount + this.__span;
+                this.__allowedChars[stack] = newCount + this.__span || 0;
             }
         }
     }, {
@@ -86,10 +113,10 @@ var CLITable = function () {
                     var startCol = row[0];
                     var cols = row[1];
                     var desc = row[2];
-                    var line = _this2.__checkLength(startCol, "first_column");
+                    var line = _this2.__checkLength(startCol, "first_column") + _this2.__addSpan();
                     for (var i = 0; i < _this2.columns; i++) {
                         var col = cols[i] || "";
-                        line += _this2.__checkLength(col, "column" + i);
+                        line += _this2.__checkLength(col, "column" + i) + _this2.__addSpan();
                     }
                     line += desc;
                     _this2.__setText(line);

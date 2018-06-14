@@ -1,4 +1,11 @@
-Version 1.1.1r1
+Version 1.2.0
+---------------
+The way, how the vertical span is generated has changed. However, the old way can still be used.
+
+~ Vertical Spans -> The constructor now takes an integer, which does the same as before, or an object, which takes options to format the vertical span.
+
+---------------
+Version 1.1.1-r1
 ---------------
 Readme has been rewritten. General corrections
 

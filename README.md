@@ -21,7 +21,19 @@ The Helper can be used by requiring it. Then assign a Variable to it, so that yo
     import CLITable from 'cli-table-helper';
     let table = new CLITable();
     
-*CLITable takes one parameter. If you supply an Integer, it defines, how many whitespaces are the span between two columns. Check the examples to see how it works.*
+CLITable takes one parameter. 
+- If an **integer** is used, it defines how many whitespaces are after a column. 
+- If an **object** is used, it can define the vertical spans by following options:
+	- left: integer
+	Number of whitespaces **before** the span sign.
+	- right: integer
+	Number of whitespaces **after** the span sign.
+	- both: integer
+	Number of whitespaces **after and before** the span sign. This option **overrides the ones above.**
+	- sign: string
+	The span sign as a string. In many cases, the "|" is used. This can also be null or an empty string.
+	
+Check the examples to see how it works.
 
 **Using the Helper**
 
@@ -104,6 +116,27 @@ Output:
     
     deposit      Amount                     Deposit the Amount.
     withdraw     Amount                     Withdraw the Amount off the Bank Account.
+    --------------------
+
+**Vertical Spans**
+
+    import CLITable from './lib/cli-table-helper';
+    let table = new CLITable({left: 2, right: 2 ,sign: '|'});
+    //alternative:
+    //let table = new CLITable({both: 2 ,sign: '|'});
+    
+    // Same as fulldemo. Look at the example above.
+Output:
+
+    Banking Account Manager
+    --------------------
+    Command:  |  Parameters:  |          |  Description:
+    
+    create    |  Name         |  Amount  |  Creates a new Bank Account.
+    delete    |  Name         |          |  Deletes the Bank Account by Name.
+    
+    deposit   |  Amount       |          |  Deposit the Amount.
+    withdraw  |  Amount       |          |  Withdraw the Amount off the Bank Account.
     --------------------
 
 ## License

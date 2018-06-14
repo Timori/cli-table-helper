@@ -12,12 +12,13 @@
     "url": "git+https://github.com/Timori/cli-table-helper.git"
   },
   "keywords": [
-    "Table",
-    "Helper",
-    "CLI",
-    "Console",
+    "table",
+    "helper",
+    "cli",
+    "console",
     "node",
-    "js"
+    "js",
+    "generator"
   ],
   "author": "Tobias Schotenröhr",
   "license": "MIT",

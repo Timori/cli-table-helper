@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-var _cliTableHelper = require("./lib/cli-table-helper");
+var _cliTableHelper = require('./lib/cli-table-helper');
 
 var _cliTableHelper2 = _interopRequireDefault(_cliTableHelper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var table = new _cliTableHelper2.default(5);
+var table = new _cliTableHelper2.default({ sign: '|', left: 1, right: 1 });
 
 console.log("Banking Account Manager");
 table.addSeperator("-");

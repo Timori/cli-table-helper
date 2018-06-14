@@ -1,5 +1,5 @@
 import CLITable from './lib/cli-table-helper';
-let table = new CLITable(5);
+let table = new CLITable({sign: '|', left: 2, right: 2});
 
 console.log("Banking Account Manager");
 table.addSeperator("-");
